@@ -1,0 +1,36 @@
+<!--home page-->
+{% extends 'base.html' %}
+{% block title %} Cafes around you! {% endblock %}
+{% block content %}
+
+<!--Main background-->
+<div class="px-4 pt-5 text-center border-bottom gradient-background">
+    <h1 class="py-5 display-4 fw-bold text-body-emphasis">Explore Kraków's best cafes!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 text-body-emphasis">On this page, you'll discover the top cafes in Kraków, along with their ratings for WiFi, electricity availability, and, of course, coffee taste. ☕</p>
+    </div>
+    <div class="overflow-hidden" style="max-height: 45vh;">
+      <div class="container px-5">
+        <img src="../static/images/cafe_photo_2.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Cafe and laptop image" width="400" height="500">
+      </div>
+    </div>
+  </div>
+
+<!--Displaying cafes-->
+<div class="container my-5">
+  <div class="p-5 text-center rounded-3"
+       style="background: url('../static/images/cafe_photo.jpg') center/cover no-repeat;">
+    <h1 class="text-body-emphasis">CAFE NAME</h1>
+    <p class="lead mb-4 text-dark fw-bold">
+      SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE
+    </p>
+    <div class="d-inline-flex gap-2 mb-5">
+      <button class="btn btn-secondary btn-lg px-4 rounded-pill" type="button">
+        Secondary link
+      </button>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
