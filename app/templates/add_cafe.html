@@ -1,11 +1,15 @@
 <!--forms to add cafe-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
 
-</body>
-</html>
+
+{% block title %} Add interesting cafe! {% endblock %}
+
+{% block content %}
+<div class ="py-5">
+    <div class="text-light w-50 py-5">
+        {{ render_form(form) }}
+    </div>
+</div>
+<!--    {{ render_form(form) }}-->
+{% endblock %}
