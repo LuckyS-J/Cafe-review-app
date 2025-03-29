@@ -18,23 +18,29 @@
 
 <!--Displaying cafes-->
 
+{% for cafe in cafes %}
 <div class="container my-5">
   <div class="p-5 text-center rounded-3 position-relative"
-       style="background: url('../static/images/cafe_photo.jpg') center/cover no-repeat;">
+       style="background: url('{{ cafe.bg_url }}') center/cover no-repeat;">
     <div class="overlay"></div> <!-- Dark overlay -->
     <div class="content">
-      <h1 class="text-white">CAFE NAME</h1>
+      <h1 class="text-white">{{cafe.name}}</h1>
       <p class="lead mb-4 fw-bold">
-        SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE SHORT DESCRIBE
+          {{cafe.describe}}
       </p>
+<p class="lead mb-4">
+    <span class="me-4">Taste of cafe: {{ cafe.cafe }}</span>
+    <span class="me-4">WiFi: {{ cafe.wifi }}</span>
+    <span>Electricity supply: {{ cafe.sockets }}</span>
+</p>
       <div class="d-inline-flex gap-2 mb-5">
-        <button class="btn btn-secondary btn-lg px-4 rounded-pill" type="button">
-          Secondary link
-        </button>
+        <a href="{{ cafe.location_url }}" target="_blank" class="btn btn-secondary btn-lg px-4 rounded-pill">
+            Checkout Location!
+        </a>
       </div>
     </div>
   </div>
 </div>
-
+{% endfor %}
 
 {% endblock %}

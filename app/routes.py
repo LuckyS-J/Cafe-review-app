@@ -12,7 +12,8 @@ main = Blueprint("main", __name__, template_folder='app/templates')
 @main.route("/")
 @main.route("/home")
 def home():
-    return render_template("index.html")
+    cafes = db.session.query(Cafe).all()
+    return render_template("index.html", cafes=cafes)
 
 
 @main.route("/add", methods=["GET", "POST"])
