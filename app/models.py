@@ -17,6 +17,7 @@ class Cafe(db.Model):
     describe: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
     location_url : Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
     bg_url : Mapped[str] = mapped_column(String(255), nullable=False)
+    cafe_url : Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
     cafe: Mapped[str] = mapped_column(String(255), nullable=False)
     wifi: Mapped[str] = mapped_column(String(255), nullable=False)
     sockets: Mapped[str] = mapped_column(String(255), nullable=False)

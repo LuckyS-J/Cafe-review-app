@@ -1,11 +1,33 @@
 <!--detailed cafe-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<div style="height: 50px;"></div>
+<div class="container mt-5 my-5">
+  <div class="p-5 text-center rounded-3 position-relative"
+       style="background: url('{{ cafe.bg_url }}') center/cover no-repeat;">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1 class="text-white d-inline">{{ cafe.name }}</h1>
+      <p class="lead mb-4 fw-bold">
+          {{cafe.describe}}
+      </p>
+<p class="lead mb-4">
+    <span class="me-4">Taste of cafe: {{ cafe.cafe }} </span>
+    <span class="me-4">WiFi: {{ cafe.wifi }}</span>
+    <span>Electricity supply: {{ cafe.sockets }}</span>
+</p>
+      <div class="d-inline-flex gap-5 mt-5">
+        <a href="{{ cafe.location_url }}" target="_blank" class="btn btn-secondary btn-lg px-4 rounded-pill">
+            Checkout Location!
+        </a>
+         <a href="{{ cafe.cafe_url }}" target="_blank" class="btn btn-secondary btn-lg px-4 rounded-pill">
+            Cafe website
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
-</body>
-</html>
+<h2 class="text-white d-inline px-5">Comments:</h2>
+
+{%endblock%}
