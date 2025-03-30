@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+
+{% block title %} Register {% endblock %}
+
+
+{% block content %}
+<div class ="py-5">
+    <div class="text-light w-50 p-5">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-warning">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+             {% endif %}
+        {% endwith %}
+        {{ render_form(form, button_map={"submit": "secondary"}) }}
+    </div>
+</div>
+{% endblock %}

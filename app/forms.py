@@ -2,7 +2,7 @@
 from wtforms import StringField
 from wtforms.fields.choices import SelectField
 from flask_wtf import FlaskForm
-from wtforms.fields.simple import URLField, SubmitField, TextAreaField
+from wtforms.fields.simple import URLField, SubmitField, TextAreaField, PasswordField, EmailField
 from wtforms.validators import InputRequired, DataRequired
 
 
@@ -15,4 +15,20 @@ class Add(FlaskForm):
     wifi = SelectField('Strength of wifi', choices=["🚫", "🛜", "🛜🛜", "🛜🛜🛜", "🛜🛜🛜🛜", "🛜🛜🛜🛜🛜"], validators=[DataRequired()], default="🛜")
     sockets = SelectField('Availability of power sockets', choices=["🚫", "⚡", "⚡⚡", "⚡⚡⚡", "⚡⚡⚡⚡", "⚡⚡⚡⚡⚡"], validators=[DataRequired()], default="⚡")
     describe = TextAreaField('Short cafe description', [InputRequired()])
-    submit = SubmitField("Enter data")
+    submit = SubmitField("Submit")
+
+class Register(FlaskForm):
+    first_name = StringField('First name', [InputRequired()])
+    last_name = StringField('Last name', [InputRequired()])
+    email = EmailField('Email', [InputRequired()])
+    password = PasswordField('Password', [InputRequired()])
+    submit = SubmitField("Submit")
+    
+class Login(FlaskForm):
+    email = EmailField('Email', [InputRequired()])
+    password = PasswordField('Password', [InputRequired()])
+    submit = SubmitField("Submit")
+
+class CommentForm(FlaskForm):
+    comment_text = TextAreaField("Add your comment:", validators=[DataRequired()])
+    submit = SubmitField("Add Comment")

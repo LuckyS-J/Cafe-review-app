@@ -1,6 +1,9 @@
 <!--detailed cafe-->
 {% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
 {% block content %}
+
+<!--Cafe display-->
 <div style="height: 50px;"></div>
 <div class="container mt-5 my-5">
   <div class="p-5 text-center rounded-3 position-relative"
@@ -18,7 +21,7 @@
 </p>
       <div class="d-inline-flex gap-5 mt-5">
         <a href="{{ cafe.location_url }}" target="_blank" class="btn btn-secondary btn-lg px-4 rounded-pill">
-            Checkout Location!
+            Location
         </a>
          <a href="{{ cafe.cafe_url }}" target="_blank" class="btn btn-secondary btn-lg px-4 rounded-pill">
             Cafe website
@@ -28,6 +31,30 @@
   </div>
 </div>
 
-<h2 class="text-white d-inline px-5">Comments:</h2>
+<div style="padding: 0 50px 15px 50px;">
+    <h2 class="text-white d-inline px-5" >Comments:</h2>
+</div>
+
+<!-- Comments Area -->
+<div class="comment">
+    <ul class="commentList pt-2" style="padding: 0 50px 5px 50px;">
+        <!-- Show all comments -->
+        {% for comment in cafe.cafe_comments: %}
+        <li>
+            <div class="commentText">
+                <p class="text-white d-inline px-5">"{{comment.content|safe}}"
+                </p><span class="sub-text text-white d-inline" style="padding-left: 60px;">Commented by: {{comment.author.first_name}} {{comment.author.last_name}}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div style="padding: 0 100px 15px 100px; color: white;">
+    {{ render_form(form, novalidate=True, button_map={"submit": "secondary"}) }}
+</div>
+
+
+
 
 {%endblock%}

@@ -16,6 +16,21 @@
     </div>
   </div>
 
+<!--Displaying flashed messages-->
+<div class="text-light w-50 p-5">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-warning">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+             {% endif %}
+        {% endwith %}
+</div>
+
+
+
 <!--Displaying cafes-->
 
 {% for cafe in cafes %}
@@ -25,7 +40,9 @@
     <div class="overlay"></div> <!-- Dark overlay -->
     <div class="content">
       <h1 class="text-white d-inline">{{ cafe.name }}</h1>
+        {% if current_user.id == 1 %}
       <a href="{{ url_for('main.delete', cafe_id=cafe.id) }}" class="text-decoration-none ms-2">❌</a>
+        {% endif %}
       <p class="lead mb-4 fw-bold">
           {{cafe.describe}}
       </p>
@@ -35,7 +52,7 @@
     <span>Electricity supply: {{ cafe.sockets }}</span>
 </p>
       <div class="d-inline-flex gap-2 mt-3">
-        <a href="{{ url_for('main.cafe_details', cafe_id=cafe.id) }}" target="_blank" class="btn btn-secondary btn-lg px-4 rounded-pill">
+        <a href="{{ url_for('main.cafe_details', cafe_id=cafe.id) }}" class="btn btn-secondary btn-lg px-4 rounded-pill">
             More info
         </a>
       </div>

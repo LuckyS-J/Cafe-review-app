@@ -1,5 +1,4 @@
 # Init flask app, and other extensions
-from symtable import Class
 
 from flask import Flask
 from .routes import main
@@ -7,9 +6,9 @@ from .routes import main
 import os
 from dotenv import load_dotenv
 from flask_bootstrap import Bootstrap5
-from app.models import db
-load_dotenv()
+from app.models import db, bcrypt, login_manager
 
+load_dotenv()
 
 
 def start_app():
@@ -26,6 +25,12 @@ def start_app():
 
     with app.app_context():
         db.create_all()
+
+    #Init bcrypt object
+    bcrypt.init_app(app)
+
+    #Init login_manager
+    login_manager.init_app(app)
 
     # register blueprint
     app.register_blueprint(main)
